@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.playground.mapper.CommonMapper" >
+
+<select id="newMeetingList" resultType = "com.playground.domain.MeetingVO">
+
+select *
+from tbl_meeting
+order by regdate DESC
+limit 0,4
+
+</select>
+
+<select id="hotMeetingList" resultType = "com.playground.domain.MeetingVO">
+
+select * 
+from tbl_meeting a
+order by 
+(select count(userid) from tbl_meeting_member where mno = a.mno) DESC
+limit 4
+
+
+</select>
+
+<select id="myList1" resultType = "com.playground.domain.MeetingVO">
+
+select *
+from tbl_meeting
+where userid = #{userid}
+
+</select>
+
+<select id="myList2" resultType = "com.playground.domain.MeetingVO">
+
+select *
+from tbl_meeting AS a
+where a.mno
+IN
+(select b.mno
+from tbl_meeting_member b
+where b.userid = #{userid}
+)
+
+</select>
+
+</mapper>

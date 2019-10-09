@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.playground.mapper.MpicMapper" >
+
+<insert id="mpicNew">
+
+insert into tbl_meeting_file
+(mno, oriname, fakename, size)
+values
+(#{mno}, #{oriname}, #{fakename}, #{size})
+
+</insert>
+
+<update id="mpicUpdate">
+
+update tbl_meeting_file
+set
+oriname = #{oriname}, 
+fakename = #{fakename},
+size = #{size}
+where mno = #{mno}
+
+</update>
+
+</mapper>
