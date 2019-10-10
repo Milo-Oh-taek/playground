@@ -93,7 +93,14 @@ $(document).ready(function(){
 		if(confirm(ask)){
 			location.href="/meeting/list";
 		}
-	})
+	});
+	$('#content').on('keyup', function() {
+		if($(this).val().length > 2500) {
+	alert("글자수는 2500자로 이내로 제한됩니다.");
+			$(this).val($(this).val().substring(0, 2500));
+		}
+	});
+	
 });	
 
 function chkAll(){

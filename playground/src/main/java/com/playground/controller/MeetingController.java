@@ -33,8 +33,6 @@ public class MeetingController {
 	@Autowired
 	MeetingService meetingService;
 	
-	private static final String UPLOAD_PATH = "C:\\Temp";
-
 	@GetMapping("/list")
 	public void meetingList(Model model, MeetingCri meetingCri) {
 
@@ -234,7 +232,7 @@ public class MeetingController {
 	}
 	
 	@GetMapping("/modify")
-	public void meetingModify(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
+	public String meetingModify(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception{
 		int mno = Integer.parseInt(request.getParameter("mno"));
 		
 		String username = CommonController.currentUserName();
@@ -242,14 +240,20 @@ public class MeetingController {
 		MeetingVO mv = meetingService.meetingGet(mno);
 		String userid = mv.getUserid();
 		
-		if(userid != username) {
+		if(!(userid.equals(username))) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('잘못된 접근입니다.'); location.href='/meeting/list';</script>");
-			}
+			out.println("<script>alert('잘못된 접근입니다.'); location.href='/meeting/list';</script>");	
+			
+			return "redirect:/meeting/list";
+		}else {
+			model.addAttribute("info", mv);
+			
+			return "/meeting/modify";
+		}
+			
 		
-		model.addAttribute("info", mv);
-		
+				
 	}
 	
 	@GetMapping("/delete")
@@ -260,7 +264,7 @@ public class MeetingController {
 		MeetingVO mv = meetingService.meetingGet(mno);
 		String userid = mv.getUserid();
 		
-		if(userid == username) {
+		if(userid.equals(username)){
 			meetingService.meetingDelete(mno);
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();

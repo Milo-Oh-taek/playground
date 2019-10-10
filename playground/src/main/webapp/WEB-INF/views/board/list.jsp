@@ -23,9 +23,11 @@ a:link {color: black;}
 a:visited{color: black;}
 a:hover{color: black;}
 
-.pagination {
+
+
+.pagination a {
   color: black;
-  
+  float: left;
   padding: 8px 16px;
   text-decoration: none;
 }

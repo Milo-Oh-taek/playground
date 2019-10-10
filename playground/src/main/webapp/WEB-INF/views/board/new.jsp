@@ -28,6 +28,26 @@ table th{
 table td{
 	font-size:13px;
 }
+* {
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+}
+html {
+height: 100%;
+}
+body {
+margin: 0;
+height: 100%;
+}
+.row {
+min-height: 100%;
+position: relative;
+padding-bottom: 19px; /* footer height */
+}
+header {
+background-color: #EFEFEF;
+}
 
 </style>
 <script>
@@ -82,7 +102,7 @@ function bestList(){
 
 </script>
 </head>
-<body style="background-image:url(../resources/img/패턴.jpg);background-size:cover;height:100%;position:relative;background-repeat:repeat;">
+<body style="background-image:url(/resources/img/패턴.jpg);background-size:cover;height:100%;position:relative;background-repeat:repeat;">
 
 
 <div class="row">
@@ -127,6 +147,7 @@ function bestList(){
     </div>
 </div>
 
-</body>
 <%@ include file = "../includes/footer.jsp" %>
+</body>
+
 </html>

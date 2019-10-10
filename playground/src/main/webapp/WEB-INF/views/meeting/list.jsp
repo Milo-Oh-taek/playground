@@ -299,7 +299,7 @@ function myList1(){
 		 <td>
 			
 		 	<a href="/meeting/get?mno=${list.mno }" >
-		 	<div class="groupCard--photo loading nametag-photo " style="background-image: url(../resources/img/${list.idValue}_${list.originalFile}); width:300px; height:150px; position:relative;">
+		 	<div class="groupCard--photo loading nametag-photo " style= "background-image: url(../resources/img/${list.idValue}_${list.originalFile}); width:300px; height:150px; position:relative;">
 		 		<div class="groupCard--gradient"></div>
                             
 		 		<div class="groupCard--content nametag-photo-name groupCard--title" style="position:absolute;  left:10px;bottom:0px;">
@@ -317,6 +317,8 @@ function myList1(){
 		 <c:set var="i" value="${i+1 }" /> 
 		 </c:forEach> 
 		 </table>
+		 
+		 
 	
 	
 	  

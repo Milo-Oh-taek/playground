@@ -30,12 +30,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		
-		<multipart-config>
-			<location>D:\development\work\playground\src\main\webapp\resources</location>
-			<max-file-size>209715200</max-file-size>
-			<max-request-size>419430400</max-request-size>
-			<file-size-threshold>209715200</file-size-threshold>
-		</multipart-config>
+		
 	</servlet>
 		
 	<servlet-mapping>

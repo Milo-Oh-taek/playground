@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.playground.domain.MeetingVO;
@@ -17,6 +18,7 @@ import com.playground.service.CommonService;
 
 import lombok.extern.log4j.Log4j;
 
+@RequestMapping("/*")
 @Controller
 @Log4j
 public class CommonController {

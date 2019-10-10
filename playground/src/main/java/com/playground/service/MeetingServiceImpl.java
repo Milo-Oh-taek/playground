@@ -21,7 +21,7 @@ import lombok.extern.log4j.Log4j;
 @Service
 public class MeetingServiceImpl implements MeetingService{
 	
-	static final String UPLOAD_PATH = "/img/";
+	static final String UPLOAD_PATH = "/home/hosting_users/oht36/tomcat/webapps/ROOT/resources/img/";
 	
 	@Autowired
 	MeetingMapper meetingMapper;

@@ -81,19 +81,23 @@ public class BoardController {
 	}
 	
 	@GetMapping("/modify")
-	public void boardModify(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception {
+	public String boardModify(HttpServletRequest request, HttpServletResponse response, Model model)throws Exception {
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		String username = CommonController.currentUserName();
 		
 		BoardVO bv = boardService.boardGet(bno);
 		String writer = bv.getWriter();
 		
-		if(writer != username) {
+		if(!(writer.equals(username))) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('잘못된 접근입니다.'); location.href='/board/list';</script>");
+			return "redirect:/board/list";
+		}else {
+			model.addAttribute("boardGet", bv);
+			return "/board/modify";
 		}
-		model.addAttribute("boardGet", bv);
+		
 	}
 	
 	@PostMapping("/modify")

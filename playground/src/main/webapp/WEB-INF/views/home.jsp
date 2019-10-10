@@ -72,9 +72,11 @@ box-sizing: border-box;
 -moz-box-sizing: border-box;
 }
 html {
+width: 100%;
 height: 75%;
 }
 body {
+width: 100%;
 margin: 0;
 height: 75%;
 }
@@ -89,30 +91,47 @@ width:100%;
 header {
 background-color: #EFEFEF;
 }
+#footer {
+position:fixed;
+bottom: 0px;
+height: 60px;
+
+width: 100%;
+
+padding: 15px 0;
+
+text-align: center;
+
+background: black;
+
+color: white;
+}
+
 
 </style>
 
 
 </head>
-<body style="background-image:url(../resources/img/패턴.jpg);background-size:cover;position:relative;background-repeat:repeat;">
+<body style="background-image:url(resources/img/패턴.jpg);background-size:cover;position:relative;background-repeat:repeat;">
 
 	
-	<div class="groupCard--photo loading nametag-photo " style="background-image: url(../resources/img/playground2.jpg); width:100%; height:300px; position:relative;background-position: 50% 60%;background-size: cover;">
+	<div class="groupCard--photo loading nametag-photo " style="background-image: url(resources/img/playground2.jpg); width:100%; height:300px; position:relative;background-position: 50% 60%;background-size: cover;">
 	
 	</div>
 	
-	<div class="row" >
 	
-	<div align ="center" style="margin-top:2%;" >
 	
-		<div><h2>New groups!</h2></div>
-		<div>
-			<table border="0" width="70%">
+	<div class="container" align ="center"  style="margin-top:2%;" >
+	
+	
+		<h2>New groups!</h2>
+		
+			<table align="center" border="0" class="table-responsive" width="70%">
 				<tr>
 					<c:forEach items="${newMeetingList }" var="list">
 						<td>
 							<a href="/meeting/get?mno=${list.mno }" >
-							<div class="groupCard--photo loading nametag-photo " style="background-image: url(../resources/img/${list.idValue}_${list.originalFile}); width:300px; height:150px; position:relative;">
+							<div class="groupCard--photo loading nametag-photo " style="position:relative;height:150px; width:250px; background-image: url(resources/img/${list.idValue}_${list.originalFile});" >
 					 		<div class="groupCard--gradient"></div>
 			                            
 					 		<div class="groupCard--content nametag-photo-name groupCard--title" style="position:absolute;  left:10px;bottom:0px;">
@@ -128,39 +147,41 @@ background-color: #EFEFEF;
 					</c:forEach>
 				</tr>
 			</table>
-		</div>
-		<br><br>
+	</div>
 		
+		<br>
+	<div class="container" align ="center" >
 		<div><h2>Hot groups!</h2></div>
 		
-			<table border="0" width="70%">
+			<table align="center" border="0" class="table-responsive" width="70%">
 				<tr>
 					<c:forEach items="${hotMeetingList }" var="list">
 						<td>
-							<div class="groupCard--photo loading nametag-photo " style="background-image: url(../resources/img/${list.idValue}_${list.originalFile}); width:300px; height:150px; position:relative;">
+							<a href="/meeting/get?mno=${list.mno }" >
+							<div class="groupCard--photo loading nametag-photo " style="background-image: url(resources/img/${list.idValue}_${list.originalFile}); width:250px; height:150px; position:relative;">
 					 		<div class="groupCard--gradient"></div>
 			                            
 					 		<div class="groupCard--content nametag-photo-name groupCard--title" style="position:absolute;  left:10px;bottom:0px;">
 			
 			                      <h6 style="color:white; font-family:nanumpenscript;"class="padding-none inline-block loading" >${list.mname}</h6>
-			                      
 							</div>
-			
-								
 							</div>
+							</a>
 						</td>
 					</c:forEach>
 				</tr>
 			</table>
-		
-		
-		</div>
 	</div>
 	
-
-
 	
-<%@ include file = "includes/footer.jsp" %>
+	
+
+
+<div id="footer">
+contact : oht366@gmail.com<br>
+Copyright © 2019. All rights reserved. 
+
+</div>
 </body>
 
 </html>

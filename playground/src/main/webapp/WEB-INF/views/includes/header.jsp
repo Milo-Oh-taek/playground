@@ -5,13 +5,54 @@
 
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<meta charset="UTF-8">
+
 <title>Insert title here</title>
 <style>
-a{margin-right:60px;}
+
+a:active, a:hover, a:link, a:visited {
+    cursor: hand;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    
+}
+
+body {margin: 0;}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
 </style>
+
 <script>
 
 $(document).ready(function(){
@@ -35,32 +76,26 @@ $(document).ready(function(){
 
 <div class="panel panel-default">
 
-	<div class="panel-heading"></div>
-	
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<div align="left">
-		<a class="navbar-brand" href="#">
-		  <img src="\resources\img\Slide-512.png" alt="Logo" style="width:40px;">
-		</a>
-		<a class="navbar-brand" href="/">Home</a>
-		<a class="navbar-brand" href="/board/list">Board</a>
-		<a class="navbar-brand" href="/meeting/list">meeting</a>
-		</div>
-		<div style="width:75%;"></div>
-		
-		<form action="/customLogout" method="post" id="isForm2">
-		<div align="right" style="margin-right:0;">
-		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
-		<sec:authorize access="isAnonymous()">
-			<button type="button" class=" btn btn-dark btn-sm" onclick="location.href='/loginPage'">Login</button>
-		</sec:authorize>
-		<sec:authorize access="isAuthenticated()">
-			<button type="submit" id="logout" class=" btn btn-dark btn-sm" >Logout</button>
-		</sec:authorize>
-		</div>
+	<ul class="topnav">
+	  <li><a class="active" href="/">Home</a></li>
+	  <li><a href="/board/list">Board</a></li>
+	  <li><a href="/meeting/list">Play</a></li>
+	  <li class="right">
+	  	<form action="/customLogout" method="post" id="isForm2">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
+			
+			<sec:authorize access="isAnonymous()">
+				<a href="/loginPage">Login</a>
+			</sec:authorize>
+			
+			<sec:authorize access="isAuthenticated()">
+				<a style="color:white;" id="logout" >Logout</a>
+			</sec:authorize>
+			
 		</form>
-  
-	</nav>
+	  </li>
+	</ul>
+		
 	
 </div>
 

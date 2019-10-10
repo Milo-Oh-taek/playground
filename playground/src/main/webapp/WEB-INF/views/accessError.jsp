@@ -47,7 +47,7 @@ color:white;
 	
 	<div align="center" style="margin-top:10%;">
 	<h1>잘못된 접근입니다.</h1>
-	<img src = "../resources/img/wrongway.jpg" style="width:600px;height:auto;"/>
+	<img src = "resources/img/wrongway.jpg" style="width:600px;height:auto;"/>
 	<br><br>
 	<button type="button" class="btn btn-dark" onclick="location.href='/'">메인페이지로 가기</button>
 	

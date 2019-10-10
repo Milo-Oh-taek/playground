@@ -74,9 +74,9 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<body style="background-image:url(../resources/img/패턴.jpg);background-size:cover;position:relative;background-repeat:repeat;">
+<body style="background-image:url(resources/img/패턴.jpg);background-size:cover;position:relative;background-repeat:repeat;">
 
-	<div class="groupCard--photo loading nametag-photo " style="background-image: url(../resources/img/playground2.jpg); width:100%; height:300px; position:relative;background-position: 50% 60%;background-size: cover;">
+	<div class="groupCard--photo loading nametag-photo " style="background-image: url(resources/img/playground2.jpg); width:100%; height:300px; position:relative;background-position: 50% 60%;background-size: cover;">
 	
 	</div>
 	
