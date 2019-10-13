@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.playground.mapper.MemberMapper" >
+
+<select id = "checkId" resultType = "int">
+
+select count(*) 
+from tbl_member
+where userid = #{userid}
+
+</select>
+
+<insert id = "memberNew">
+
+insert 
+into tbl_member
+(userid, userpw, username, email)
+values
+(#{userid}, #{userpw},#{username},#{email}) 
+
+</insert>
+
+<insert id = "authNew">
+
+insert
+into tbl_member_auth
+(userid)
+values
+(#{userid})
+
+</insert>
+
+</mapper>

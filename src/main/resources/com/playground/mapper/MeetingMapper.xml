@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.playground.mapper.MeetingMapper" >
+
+<select id = "meetingList" resultType = "com.playground.domain.MeetingVO">
+
+select 
+*,
+(select fakename from tbl_meeting_file where mno = m.mno) AS fakename 
+from tbl_meeting m
+
+<trim prefix="WHERE" prefixOverrides="AND | OR">
+<if test="district != 'zz'">
+ location = #{district}
+</if>
+<if test="category != 'zz'">
+ AND category = #{category}
+</if>
+<if test="search != 'zz'">
+ AND mname like CONCAT('%',#{search},'%')
+</if>	
+</trim>
+
+order by mno desc
+
+</select>
+
+<select id = "meetingGet" resultType = "com.playground.domain.MeetingVO">
+
+select 
+*,
+(select fakename from tbl_meeting_file where mno = m.mno) AS fakename 
+from tbl_meeting m
+where mno = #{mno}
+
+</select>
+
+<select id = "meetingNew">
+
+insert into tbl_meeting
+(userid, mname, location, content, whatday, lat, lng, chat, idValue, originalFile, category) 
+values 
+(#{userid}, #{mname}, #{location}, #{content}, #{whatday}, #{lat}, #{lng}, #{chat}, #{idValue}, #{originalFile}, #{category}) 
+
+</select>
+
+<update id = "meetingModify">
+
+update tbl_meeting
+set 
+userid = #{userid}, 
+mname = #{mname}, 
+location = #{location}, 
+content = #{content}, 
+whatday = #{whatday}, 
+lat = #{lat}, 
+lng = #{lng}, 
+chat = #{chat}, 
+originalFile = #{originalFile},
+idValue = #{idValue}
+where mno = #{mno}
+
+</update>
+
+<delete id="meetingDelete">
+
+delete 
+from tbl_meeting
+where mno = #{mno}
+
+</delete>
+
+<select id = "meetingJoin">
+
+insert into tbl_meeting_member
+(mno, userid)
+values
+(#{mno},#{userid})
+
+</select>
+
+<delete id = "meetingQuit">
+
+delete from tbl_meeting_member
+where mno = #{mno} and userid = #{userid}
+
+</delete>
+
+<select id = "memCnt" resultType = "int">
+
+select count(userid)
+from tbl_meeting_member
+where mno = #{mno}
+
+</select>
+
+<select id = "mnoSearch" resultType = "int">
+
+select mno from tbl_meeting where idValue = #{idValue}
+
+</select>
+
+<select id = "joinChk" resultType = "int">
+
+select count(*)
+from tbl_meeting_member
+where mno = #{mno} and userid = #{userid}
+
+</select>
+
+</mapper>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.playground.mapper.BoardMapper" >
+
+<sql id="criteria">
+<trim prefix="WHERE" prefixOverrides="AND | OR">
+<if test="searchType=='title'">
+ AND title like CONCAT('%',#{keyword},'%')
+</if>
+<if test="searchType=='content'">
+ AND content like CONCAT('%',#{keyword},'%')
+</if>
+<if test="searchType=='writer'">
+ AND writer like CONCAT('%',#{keyword},'%')
+</if>	
+</trim>
+</sql>
+
+<select id="boardList" resultType="com.playground.domain.BoardVO">
+
+	select 
+	*, 
+	(select count(*) from tbl_reply where bno = b.bno) AS replyCnt,
+	(select count(*) from tbl_like where bno = b.bno) AS likeCnt
+	
+	 from tbl_board b
+	
+	<include refid="criteria"></include>
+	
+	order by bno desc limit #{pageStart}, #{amount}
+
+</select>
+
+<select id="boardNew">
+
+insert into tbl_board(title,content,writer) values (#{title},#{content},#{writer})
+
+</select>
+
+<select id="boardGet" resultType="com.playground.domain.BoardVO">
+
+select * from tbl_board where bno = #{bno}
+
+</select>
+
+<update id="boardModify" >
+
+update tbl_board set title = #{title}, content = #{content}, updatedate = now() where bno = #{bno}
+
+</update>
+
+<delete id="boardDelete">
+
+delete from tbl_board where bno = #{bno}
+
+</delete>
+
+<select id="getTotal" resultType = "int">
+
+select count(*) from tbl_board
+
+<include refid="criteria"></include>
+
+</select>
+
+<update id="updateViewCnt">
+
+update tbl_board set viewCnt = viewCnt + 1 where bno = #{bno}
+
+</update>
+
+<insert id="like">
+
+insert into tbl_like
+(bno, userid)
+values
+(#{bno}, #{userid})
+
+</insert>
+
+<delete id="unlike">
+
+delete from tbl_like
+
+where bno = #{bno} and userid = #{userid}
+
+</delete>
+
+<select id="likeChk" resultType="int">
+
+select count(*)
+from tbl_like
+where bno = #{bno} and userid = #{userid}
+
+</select>
+
+<select id="getLike" resultType="int">
+
+select count(userid)
+from tbl_like
+where bno = #{bno}
+
+</select>
+
+<select id="bestList" resultType="com.playground.domain.BoardVO">
+
+select * ,
+(select count(*) from tbl_like where bno = a.bno) AS likeCnt
+from tbl_board a
+where regdate > date_add(now(),interval -7 day)
+order by 
+(select count(*) from tbl_like where bno = a.bno) desc
+limit 10
+
+</select>
+
+
+
+</mapper>
