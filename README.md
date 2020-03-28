@@ -1,4 +1,4 @@
-I was inspired by website 'meetup'.
+I was inspired by website 'meetup'.<br>
 그룹 모임 웹사이트 'meetup'을 모토로 제작한 포트폴리오입니다.
 
 Project : playground<br>
