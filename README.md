@@ -1,9 +1,11 @@
+I was inspired by website 'meetup'.
 그룹 모임 웹사이트 'meetup'을 모토로 제작한 포트폴리오입니다.
 
-프로젝트명 : playground<br>
-프로젝트 기간 : 약 1주일<br>
-개발 환경 : Spring 5, java 8, mysql // Bootstrap 4, Jquery<br>
-개발 인원 : 본인 <br>
+Project : playground<br>
+Duration : a week<br>
+Environment : Spring 5, java 8, mysql // Bootstrap 4, Jquery<br>
+Open Api : Geolocation, OpenWeatherMap Api, google geocoding
+Deverloper : by myself <br>
 
 * Main
 ![main](https://user-images.githubusercontent.com/56327550/72674155-dfb71d00-3ab6-11ea-867c-90e0a8b2ec5e.png)
@@ -15,6 +17,7 @@ New group : 모임 생성순으로 정렬, Hot group : 멤버 순 정렬
 ![signup](https://user-images.githubusercontent.com/56327550/72674152-df1e8680-3ab6-11ea-9689-09bb5166742f.png)
 
 onkeyup - ajax를 통한 실시간 ID 중복검사
+onkeyup - used Ajax to check if this Id is already exists.
 
 * BoardList
 ![boardList](https://user-images.githubusercontent.com/56327550/72674154-dfb71d00-3ab6-11ea-991a-ffe2058b8d12.png)
