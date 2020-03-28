@@ -4,7 +4,7 @@ I was inspired by website 'meetup'.<br>
 Project : playground<br>
 Duration : a week<br>
 Environment : Spring 5, java 8, mysql // Bootstrap 4, Jquery<br>
-Open Api : Geolocation, OpenWeatherMap Api, google geocoding
+Open Api : Geolocation, OpenWeatherMap Api, google geocoding<br>
 Deverloper : by myself <br>
 
 * Main
